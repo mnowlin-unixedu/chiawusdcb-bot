@@ -47,7 +47,7 @@ def log_taken_offer(info):
 def take_offer(filepath, offered_amt, offered_name, requested_amt, requested_name, price, pct, offer_id, direction):
     try:
         print(f"⚡ Taking offer: {filepath}")
-        subprocess.run([CHIA_CLI, "wallet", "take_offer", filepath, "-f", FINGERPRINT], input="y\n", text=True, check=True)
+        subprocess.run([CHIA_CLI, "wallet", "take_offer", "-e", filepath, "-f", FINGERPRINT], input="y\n", text=True, check=True)
         log_taken_offer(
             f"SUCCESS [{direction}] | {offered_amt:.4f} {offered_name} → {requested_amt:.4f} {requested_name} | ${price:.4f} ({pct:+.2f}%) | Offer ID: {offer_id} | File: {filepath}"
         )
